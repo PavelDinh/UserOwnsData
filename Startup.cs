@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -16,10 +17,14 @@ using Microsoft.Identity.Web.UI;
 using Microsoft.Identity.Web.TokenCacheProviders;
 using Microsoft.Identity.Web.TokenCacheProviders.InMemory;
 
+using UserOwnsData.Services;
+
 namespace UserOwnsData
 {
+
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,9 +35,15 @@ namespace UserOwnsData
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMicrosoftIdentityWebAppAuthentication(Configuration);
 
-            var mvcController = services.AddControllersWithViews(options =>
+            services
+              .AddMicrosoftIdentityWebAppAuthentication(Configuration)
+              .EnableTokenAcquisitionToCallDownstreamApi(PowerBiServiceApi.RequiredScopes)
+              .AddInMemoryTokenCaches();
+
+            services.AddScoped(typeof(PowerBiServiceApi));
+
+            var mvcBuilder = services.AddControllersWithViews(options =>
             {
                 var policy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
@@ -40,7 +51,8 @@ namespace UserOwnsData
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            mvcController.AddMicrosoftIdentityUI();
+            mvcBuilder.AddMicrosoftIdentityUI();
+
             services.AddRazorPages();
         }
 
