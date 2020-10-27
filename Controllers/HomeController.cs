@@ -20,12 +20,13 @@ namespace UserOwnsData.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Embed()
         {
             return View();
         }
