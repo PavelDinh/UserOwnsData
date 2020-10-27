@@ -29,14 +29,14 @@ namespace UserOwnsData.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Embed()
+        public IActionResult Embed()
         {
 
-            Guid workspaceId = new Guid("d0f37274-fdc6-4a3b-a10c-e10ea41b07ea");
-            Guid reportId = new Guid("77309bbf-d545-4faf-928f-a5b2037ac436");
+            // Guid workspaceId = new Guid("d0f37274-fdc6-4a3b-a10c-e10ea41b07ea");
+            // Guid reportId = new Guid("77309bbf-d545-4faf-928f-a5b2037ac436");
 
-            var viewModel = await powerBiServiceApi.GetReport(workspaceId, reportId);
-            return View(viewModel);
+            // var viewModel = await powerBiServiceApi.GetReport(workspaceId, reportId);
+            return View();
 
         }
 
