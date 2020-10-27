@@ -1,8 +1,14 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using System.Security.Principal
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (User.Identity.IsAuthenticated) {
+  <div class="jumbotron">
+    <h2>Welcome @User.FindFirst("name").Value</h2>
+    <p>You have now logged into this application.</p>
+  </div>
+}
+else {
+  <div class="jumbotron">
+    <h2>Welcome to the User-Owns-Data Tutorial</h2>
+    <p>Click the <strong>sign in</strong> link in the upper right to get started</p>
+  </div>
+}
