@@ -14392,8 +14392,8 @@
   "RootNamespace": "UserOwnsData",
   "Documents": [
     {
-      "FilePath": "d:\\Programming\\C#\\ASP.NET Core\\UserOwnsData\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "d:\\Programming\\C#\\ASP.NET Core\\UserOwnsData\\Views\\Home\\Embed.cshtml",
+      "TargetPath": "Views\\Home\\Embed.cshtml",
       "FileKind": "mvc"
     },
     {
