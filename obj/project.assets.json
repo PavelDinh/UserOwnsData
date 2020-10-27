@@ -1071,7 +1071,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.Identity.Web >= 1.2.0",
       "Microsoft.Identity.Web.UI >= 1.2.0",
-      "Microsoft.PowerBi.Api >= *"
+      "Microsoft.PowerBi.Api >= 3.17.0"
     ]
   },
   "packageFolders": {
@@ -1127,7 +1127,7 @@
           },
           "Microsoft.PowerBi.Api": {
             "target": "Package",
-            "version": "[*, )"
+            "version": "[3.17.0, )"
           }
         },
         "imports": [

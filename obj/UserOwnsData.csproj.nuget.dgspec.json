@@ -53,7 +53,7 @@
             },
             "Microsoft.PowerBi.Api": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[3.17.0, )"
             }
           },
           "imports": [
